@@ -1,0 +1,168 @@
+// Usage.swift
+// Screen Time Child
+//
+// Usage tracking and earned time models
+
+import Foundation
+
+// MARK: - Usage Session
+
+struct UsageSession: Codable, Identifiable, Equatable {
+    let id: UUID
+    let childId: UUID
+    let deviceId: UUID
+    let appId: UUID?
+    let bundleId: String
+    let appName: String
+    let category: AppCategory
+
+    let startedAt: Date
+    var endedAt: Date?
+    var durationSeconds: Int?
+
+    let date: String  // YYYY-MM-DD format
+    let syncedAt: Date
+    let createdAt: Date
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case childId = "child_id"
+        case deviceId = "device_id"
+        case appId = "app_id"
+        case bundleId = "bundle_id"
+        case appName = "app_name"
+        case category
+        case startedAt = "started_at"
+        case endedAt = "ended_at"
+        case durationSeconds = "duration_seconds"
+        case date
+        case syncedAt = "synced_at"
+        case createdAt = "created_at"
+    }
+
+    var isActive: Bool {
+        endedAt == nil
+    }
+
+    var durationMinutes: Int {
+        guard let seconds = durationSeconds else { return 0 }
+        return seconds / 60
+    }
+
+    var durationFormatted: String {
+        guard let seconds = durationSeconds else { return "Active" }
+
+        let minutes = seconds / 60
+        let remainingSeconds = seconds % 60
+
+        if minutes >= 60 {
+            let hours = minutes / 60
+            let remainingMinutes = minutes % 60
+            if remainingMinutes == 0 {
+                return "\(hours)h"
+            } else {
+                return "\(hours)h \(remainingMinutes)m"
+            }
+        } else if minutes > 0 {
+            if remainingSeconds > 0 {
+                return "\(minutes)m \(remainingSeconds)s"
+            } else {
+                return "\(minutes)m"
+            }
+        } else {
+            return "\(seconds)s"
+        }
+    }
+}
+
+// MARK: - Earned Time
+
+struct EarnedTime: Codable, Identifiable, Equatable {
+    let id: UUID
+    let childId: UUID
+    let familyId: UUID
+    let date: String  // YYYY-MM-DD format
+
+    var educationalMinutes: Int
+    let requiredEducationalMinutes: Int
+    var recreationalMinutesUsed: Int
+    var recreationalMinutesAvailable: Int
+
+    var requirementMet: Bool
+    let lastCalculated: Date
+
+    let createdAt: Date
+    var updatedAt: Date
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case childId = "child_id"
+        case familyId = "family_id"
+        case date
+        case educationalMinutes = "educational_minutes"
+        case requiredEducationalMinutes = "required_educational_minutes"
+        case recreationalMinutesUsed = "recreational_minutes_used"
+        case recreationalMinutesAvailable = "recreational_minutes_available"
+        case requirementMet = "requirement_met"
+        case lastCalculated = "last_calculated"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+
+    var progressPercentage: Double {
+        guard requiredEducationalMinutes > 0 else { return 1.0 }
+        return min(Double(educationalMinutes) / Double(requiredEducationalMinutes), 1.0)
+    }
+
+    var remainingEducationalMinutes: Int {
+        max(requiredEducationalMinutes - educationalMinutes, 0)
+    }
+
+    var remainingRecreationalMinutes: Int {
+        max(recreationalMinutesAvailable - recreationalMinutesUsed, 0)
+    }
+
+    var educationalTimeFormatted: String {
+        "\(educationalMinutes) / \(requiredEducationalMinutes) min"
+    }
+
+    var recreationalTimeFormatted: String {
+        "\(recreationalMinutesUsed) / \(recreationalMinutesAvailable) min"
+    }
+}
+
+// MARK: - Create Usage Session Request
+
+struct CreateUsageSessionRequest: Codable {
+    let childId: UUID
+    let deviceId: UUID
+    let bundleId: String
+    let appName: String
+    let category: AppCategory
+    let startedAt: Date
+    let date: String
+
+    enum CodingKeys: String, CodingKey {
+        case childId = "child_id"
+        case deviceId = "device_id"
+        case bundleId = "bundle_id"
+        case appName = "app_name"
+        case category
+        case startedAt = "started_at"
+        case date
+    }
+}
+
+// MARK: - Update Usage Session Request
+
+struct UpdateUsageSessionRequest: Codable {
+    let sessionId: UUID
+    let endedAt: Date
+    let durationSeconds: Int
+
+    enum CodingKeys: String, CodingKey {
+        case sessionId = "session_id"
+        case endedAt = "ended_at"
+        case durationSeconds = "duration_seconds"
+    }
+}

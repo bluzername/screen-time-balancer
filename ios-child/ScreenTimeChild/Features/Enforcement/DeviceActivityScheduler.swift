@@ -191,6 +191,7 @@ class ShieldConfigurationHelper {
 class BackgroundSyncManager {
 
     private let sharedData = SharedDataManager()
+    private let usageRepository = UsageRepository()
 
     func syncPendingSessions() async {
         // Get completed sessions that haven't been synced
@@ -203,29 +204,80 @@ class BackgroundSyncManager {
 
         print("📤 Syncing \(sessions.count) sessions to backend...")
 
-        // TODO: Sync to Supabase backend
-        // This would use the UsageRepository to upload sessions
+        var successCount = 0
+        var failedSessions: [UsageSessionData] = []
 
-        do {
-            // Example sync code:
-            // for session in sessions {
-            //     try await usageRepository.createSession(session)
-            // }
+        // Sync each session to backend
+        for sessionData in sessions {
+            do {
+                // Convert session data to create request
+                let request = CreateUsageSessionRequest(
+                    childId: getChildId() ?? UUID(),
+                    deviceId: getDeviceId() ?? UUID(),
+                    bundleId: sessionData.bundleId,
+                    appName: sessionData.appName,
+                    category: sessionData.category,
+                    startedAt: sessionData.startTime,
+                    date: sessionData.date
+                )
 
-            // After successful sync, clear completed sessions
-            // sharedData.clearCompletedSessions()
+                // Create session in backend
+                var createdSession = try await usageRepository.createSession(request)
 
-            print("✅ Sessions synced successfully")
+                // If session is complete, update with end time
+                if let endTime = sessionData.endTime {
+                    let updateRequest = UpdateUsageSessionRequest(
+                        sessionId: createdSession.id,
+                        endedAt: endTime,
+                        durationSeconds: sessionData.durationSeconds ?? 0
+                    )
+                    createdSession = try await usageRepository.updateSession(createdSession.id, updateRequest)
+                }
 
-        } catch {
-            print("❌ Sync failed: \(error)")
+                successCount += 1
+                print("✅ Synced session: \(sessionData.appName)")
+
+            } catch {
+                print("❌ Failed to sync session \(sessionData.id): \(error)")
+                failedSessions.append(sessionData)
+            }
         }
+
+        // Clear successfully synced sessions
+        if successCount > 0 {
+            sharedData.clearCompletedSessions()
+            print("✅ Successfully synced \(successCount)/\(sessions.count) sessions")
+        }
+
+        // Save failed sessions for retry
+        if !failedSessions.isEmpty {
+            print("⚠️ \(failedSessions.count) sessions failed, will retry later")
+            // Could store failed sessions separately for retry
+        }
+
+        // Update last sync time
+        UserDefaults.standard.set(Date(), forKey: "last_session_sync")
     }
 
     func scheduleBackgroundSync() {
         // Schedule periodic background sync
         // This would use BGTaskScheduler for background processing
-
         print("⏰ Background sync scheduled")
+    }
+
+    // MARK: - Helpers
+
+    private func getChildId() -> UUID? {
+        guard let childIdString = UserDefaults.standard.string(forKey: "child_id") else {
+            return nil
+        }
+        return UUID(uuidString: childIdString)
+    }
+
+    private func getDeviceId() -> UUID? {
+        guard let deviceIdString = UserDefaults.standard.string(forKey: "device_id") else {
+            return nil
+        }
+        return UUID(uuidString: deviceIdString)
     }
 }

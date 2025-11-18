@@ -25,12 +25,17 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
 
         print("📱 Activity started: \(activity)")
 
+        let category = determineCategory(for: activity)
+        let bundleId = extractBundleId(from: activity.rawValue)
+        let appName = extractAppName(from: activity.rawValue)
+
         // Record the start of this activity session
         let session = UsageSessionData(
             activityName: activity.rawValue,
+            bundleId: bundleId,
+            appName: appName,
             startTime: Date(),
-            endTime: nil,
-            category: determineCategory(for: activity)
+            category: category
         )
 
         sharedData.saveSessionStart(session)
@@ -203,6 +208,25 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
 
         print("🔓 Removed all shields - recreational apps unlocked")
     }
+
+    // MARK: - Helper Methods
+
+    private func extractBundleId(from activityName: String) -> String {
+        // Activity name might be the bundle ID itself or contain it
+        // For now, assume it is the bundle ID
+        // In production, you would parse this from the DeviceActivityName properly
+        return activityName
+    }
+
+    private func extractAppName(from activityName: String) -> String {
+        // Extract a friendly app name from bundle ID
+        // e.g., "com.apple.mobilesafari" -> "Safari"
+        let components = activityName.components(separatedBy: ".")
+        if let lastComponent = components.last {
+            return lastComponent.capitalized
+        }
+        return activityName
+    }
 }
 
 // MARK: - Usage Session Data
@@ -210,19 +234,23 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
 struct UsageSessionData: Codable {
     let id: UUID
     let activityName: String
-    var startTime: Date?
+    let bundleId: String
+    let appName: String
+    var startTime: Date
     var endTime: Date?
     var durationSeconds: Int?
-    let category: String
+    var category: AppCategory
     let date: String
 
-    init(activityName: String, startTime: Date?, endTime: Date?, category: String) {
+    init(activityName: String, bundleId: String, appName: String, startTime: Date, category: String) {
         self.id = UUID()
         self.activityName = activityName
+        self.bundleId = bundleId
+        self.appName = appName
         self.startTime = startTime
-        self.endTime = endTime
+        self.endTime = nil
         self.durationSeconds = nil
-        self.category = category
+        self.category = AppCategory(rawValue: category) ?? .uncategorized
 
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"

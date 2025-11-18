@@ -249,21 +249,33 @@ class EnforcementEngine: ObservableObject {
 
         do {
             // Create session in backend
-            // Would call API to create session
-            print("📱 Started session for \(appName)")
+            currentSession = try await usageRepository.createSession(request)
+            print("📱 Started session for \(appName) - ID: \(currentSession!.id)")
         } catch {
             print("Error starting session: \(error)")
         }
     }
 
     func endAppSession() async {
-        guard let startTime = sessionStartTime else { return }
+        guard let startTime = sessionStartTime,
+              let session = currentSession else { return }
 
         let endTime = Date()
         let duration = Int(endTime.timeIntervalSince(startTime))
 
         // Update session with end time and duration
-        // Would call API to update session
+        let updateRequest = UpdateUsageSessionRequest(
+            sessionId: session.id,
+            endedAt: endTime,
+            durationSeconds: duration
+        )
+
+        do {
+            let updatedSession = try await usageRepository.updateSession(session.id, updateRequest)
+            print("⏹️ Ended session for \(updatedSession.appName). Duration: \(duration)s (\(duration/60) min)")
+        } catch {
+            print("Error ending session: \(error)")
+        }
 
         sessionStartTime = nil
         currentSession = nil
@@ -271,8 +283,6 @@ class EnforcementEngine: ObservableObject {
         // Update earned time
         await recalculateEarnedTime()
         await updateEnforcement()
-
-        print("⏹️ Ended session. Duration: \(duration)s")
     }
 
     private func recalculateEarnedTime() async {
