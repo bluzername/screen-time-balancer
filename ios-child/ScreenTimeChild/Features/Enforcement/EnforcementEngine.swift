@@ -36,8 +36,15 @@ class EnforcementEngine: ObservableObject {
     private let store = ManagedSettingsStore()
     private let center = AuthorizationCenter.shared
 
+    // Device Activity Scheduler for real-time monitoring
+    private let deviceActivityScheduler = DeviceActivityScheduler()
+
+    // Shared data manager for extension communication
+    private let sharedData = SharedDataManager()
+
     init() {
         startMonitoring()
+        setupExtensionCommunication()
     }
 
     // MARK: - Monitoring
@@ -54,6 +61,63 @@ class EnforcementEngine: ObservableObject {
 
         // Start usage tracking
         startUsageTracking()
+
+        // Schedule device activity monitoring
+        Task {
+            await scheduleDeviceActivityMonitoring()
+        }
+    }
+
+    private func setupExtensionCommunication() {
+        // Listen for updates from the Device Activity Monitor extension
+        NotificationCenter.default.addObserver(
+            forName: .educationalProgressUpdated,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard let self = self,
+                  let progress = notification.object as? EducationalProgress else { return }
+
+            // Update UI with progress from extension
+            self.educationalTimeToday = progress.currentMinutes
+
+            Task { @MainActor in
+                // Update enforcement based on new progress
+                await self.updateEnforcement()
+            }
+        }
+    }
+
+    private func scheduleDeviceActivityMonitoring() async {
+        guard let rule = currentRule else { return }
+
+        let educationalBundleIds = educationalApps.map { $0.bundleId }
+        let recreationalBundleIds = recreationalApps.map { $0.bundleId }
+
+        do {
+            try await deviceActivityScheduler.scheduleMonitoring(
+                educationalApps: educationalBundleIds,
+                recreationalApps: recreationalBundleIds,
+                requiredEducationalMinutes: rule.requiredEducationalMinutes,
+                maxRecreationalMinutes: rule.maxRecreationalMinutes
+            )
+
+            // Sync initial data to shared container
+            sharedData.saveRequiredEducationalMinutes(rule.requiredEducationalMinutes)
+            var categories: [String: String] = [:]
+            for app in educationalApps {
+                categories[app.bundleId] = "educational"
+            }
+            for app in recreationalApps {
+                categories[app.bundleId] = "recreational"
+            }
+            sharedData.saveAppCategories(categories)
+
+            print("✅ Device activity monitoring scheduled")
+
+        } catch {
+            print("❌ Failed to schedule monitoring: \(error)")
+        }
     }
 
     private func startPeriodicSync() {
