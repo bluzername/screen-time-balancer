@@ -15,19 +15,19 @@ struct MainTabView: View {
                 }
                 .tag(0)
 
-            FamilyView()
+            FamilyManagementView()
                 .tabItem {
                     Label("Family", systemImage: "person.3.fill")
                 }
                 .tag(1)
 
-            RulesView()
+            RulesManagementView()
                 .tabItem {
                     Label("Rules", systemImage: "list.bullet.clipboard.fill")
                 }
                 .tag(2)
 
-            AppsView()
+            AppCategorizationView()
                 .tabItem {
                     Label("Apps", systemImage: "square.grid.2x2.fill")
                 }
@@ -182,34 +182,7 @@ class DashboardViewModel: ObservableObject {
     }
 }
 
-// MARK: - Placeholder Views
-
-struct FamilyView: View {
-    var body: some View {
-        NavigationView {
-            Text("Family Management")
-                .navigationTitle("Family")
-        }
-    }
-}
-
-struct RulesView: View {
-    var body: some View {
-        NavigationView {
-            Text("Screen Time Rules")
-                .navigationTitle("Rules")
-        }
-    }
-}
-
-struct AppsView: View {
-    var body: some View {
-        NavigationView {
-            Text("App Categorization")
-                .navigationTitle("Apps")
-        }
-    }
-}
+// MARK: - Settings View
 
 struct SettingsView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
