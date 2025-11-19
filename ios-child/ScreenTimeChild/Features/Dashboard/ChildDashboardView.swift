@@ -300,6 +300,8 @@ class ChildAuthViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     private let authRepository = AuthRepository()
+    private let familyRepository = FamilyRepository()
+    private let deviceRepository = DeviceRepository()
 
     func checkAuthStatus() {
         Task {
@@ -336,11 +338,73 @@ class ChildAuthViewModel: ObservableObject {
         }
     }
 
+    func joinFamily(inviteCode: String) {
+        Task {
+            isLoading = true
+            errorMessage = nil
+            defer { isLoading = false }
+
+            do {
+                // Validate invite code format
+                guard inviteCode.count == 8 else {
+                    errorMessage = "Invite code must be 8 characters"
+                    return
+                }
+
+                // Get current user
+                guard let currentUser = try? await authRepository.getCurrentUser() else {
+                    errorMessage = "Please sign in first"
+                    return
+                }
+
+                guard currentUser.role == .child else {
+                    errorMessage = "Only child accounts can join families using invite codes"
+                    return
+                }
+
+                // Join family
+                let result = try await familyRepository.joinFamily(
+                    inviteCode: inviteCode.uppercased(),
+                    userId: currentUser.id,
+                    role: .child
+                )
+
+                // Register device
+                let deviceRequest = DeviceRepository.getCurrentDeviceInfo(
+                    childId: currentUser.id,
+                    familyId: result.family.id
+                )
+                let device = try await deviceRepository.registerDevice(deviceRequest)
+
+                // Save family and device IDs
+                UserDefaults.standard.set(result.family.id.uuidString, forKey: "family_id")
+                UserDefaults.standard.set(device.id.uuidString, forKey: "device_id")
+                UserDefaults.standard.set(currentUser.id.uuidString, forKey: "child_id")
+
+                print("✅ Successfully joined family: \(result.family.name)")
+                print("✅ Device registered: \(device.deviceName)")
+
+                // Navigate to dashboard
+                self.currentUser = currentUser
+                isAuthenticated = true
+
+            } catch {
+                errorMessage = "Failed to join family: \(error.localizedDescription)"
+                print("❌ Join family error: \(error)")
+            }
+        }
+    }
+
     func signOut() {
         Task {
             try? await authRepository.signOut()
             isAuthenticated = false
             currentUser = nil
+
+            // Clear stored IDs
+            UserDefaults.standard.removeObject(forKey: "family_id")
+            UserDefaults.standard.removeObject(forKey: "device_id")
+            UserDefaults.standard.removeObject(forKey: "child_id")
         }
     }
 }

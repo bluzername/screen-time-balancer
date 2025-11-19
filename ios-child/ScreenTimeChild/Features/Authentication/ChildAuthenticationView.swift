@@ -89,26 +89,46 @@ struct ChildAuthenticationView: View {
                             Text("Enter Family Invite Code")
                                 .font(.headline)
 
-                            TextField("Invite Code", text: $inviteCode)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .textContentType(.oneTimeCode)
-                                .autocapitalization(.allCharacters)
-                                .multilineTextAlignment(.center)
-                                .font(.system(.title3, design: .monospaced))
+                            VStack(alignment: .leading, spacing: 4) {
+                                TextField("Invite Code", text: $inviteCode)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .textContentType(.oneTimeCode)
+                                    .autocapitalization(.allCharacters)
+                                    .multilineTextAlignment(.center)
+                                    .font(.system(.title3, design: .monospaced))
+                                    .onChange(of: inviteCode) { newValue in
+                                        inviteCode = InviteCodeValidator.format(newValue)
+                                    }
+
+                                if !inviteCode.isEmpty, let error = InviteCodeValidator.validationError(for: inviteCode) {
+                                    Text(error)
+                                        .font(.caption)
+                                        .foregroundColor(.red)
+                                        .multilineTextAlignment(.center)
+                                        .frame(maxWidth: .infinity)
+                                }
+                            }
                         }
                         .padding(.horizontal)
 
-                        Button(action: { /* Join family */ }) {
-                            Text("Join Family")
-                                .fontWeight(.semibold)
+                        Button(action: {
+                            viewModel.joinFamily(inviteCode: inviteCode)
+                        }) {
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            } else {
+                                Text("Join Family")
+                                    .fontWeight(.semibold)
+                            }
                         }
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
-                        .background(Color.blue)
+                        .background(InviteCodeValidator.isValid(inviteCode) ? Color.blue : Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
-                        .disabled(inviteCode.count != 8)
+                        .disabled(viewModel.isLoading || !InviteCodeValidator.isValid(inviteCode))
 
                         Button(action: { showInviteCodeEntry = false }) {
                             Text("Back to sign in")

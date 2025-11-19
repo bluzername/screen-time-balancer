@@ -9,6 +9,14 @@ struct AuthenticationView: View {
     @State private var password = ""
     @State private var fullName = ""
     @State private var isSignUp = false
+    @State private var emailError: String?
+    @State private var passwordError: String?
+    @State private var nameError: String?
+    @FocusState private var focusedField: Field?
+
+    enum Field {
+        case name, email, password
+    }
 
     var body: some View {
         NavigationView {
@@ -33,20 +41,75 @@ struct AuthenticationView: View {
                     // Form
                     VStack(spacing: 16) {
                         if isSignUp {
-                            TextField("Full Name", text: $fullName)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .textContentType(.name)
+                            VStack(alignment: .leading, spacing: 4) {
+                                TextField("Full Name", text: $fullName)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .textContentType(.name)
+                                    .focused($focusedField, equals: .name)
+                                    .onChange(of: fullName) { newValue in
+                                        fullName = InputSanitizer.sanitizeText(newValue)
+                                        fullName = InputSanitizer.limitLength(fullName, maxLength: 100)
+                                        nameError = NameValidator.validationError(for: fullName)
+                                    }
+
+                                if let error = nameError, !fullName.isEmpty {
+                                    Text(error)
+                                        .font(.caption)
+                                        .foregroundColor(.red)
+                                }
+                            }
                         }
 
-                        TextField("Email", text: $email)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .textContentType(.emailAddress)
-                            .autocapitalization(.none)
-                            .keyboardType(.emailAddress)
+                        VStack(alignment: .leading, spacing: 4) {
+                            TextField("Email", text: $email)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .textContentType(.emailAddress)
+                                .autocapitalization(.none)
+                                .keyboardType(.emailAddress)
+                                .focused($focusedField, equals: .email)
+                                .onChange(of: email) { newValue in
+                                    email = InputSanitizer.sanitizeText(newValue)
+                                    email = InputSanitizer.limitLength(email, maxLength: 254)
+                                    emailError = EmailValidator.validationError(for: email)
+                                }
 
-                        SecureField("Password", text: $password)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .textContentType(isSignUp ? .newPassword : .password)
+                            if let error = emailError, !email.isEmpty {
+                                Text(error)
+                                    .font(.caption)
+                                    .foregroundColor(.red)
+                            }
+                        }
+
+                        VStack(alignment: .leading, spacing: 4) {
+                            SecureField("Password", text: $password)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .textContentType(isSignUp ? .newPassword : .password)
+                                .focused($focusedField, equals: .password)
+                                .onChange(of: password) { newValue in
+                                    password = InputSanitizer.limitLength(newValue, maxLength: 128)
+                                    if isSignUp {
+                                        let validation = PasswordValidator.validate(password)
+                                        passwordError = validation.errorMessage
+                                    }
+                                }
+
+                            if isSignUp {
+                                if let error = passwordError, !password.isEmpty {
+                                    Text(error)
+                                        .font(.caption)
+                                        .foregroundColor(.red)
+                                } else if !password.isEmpty {
+                                    let strength = PasswordValidator.strength(password)
+                                    HStack {
+                                        Text("Password strength:")
+                                            .font(.caption)
+                                        Text(strength.description)
+                                            .font(.caption)
+                                            .foregroundColor(strengthColor(strength))
+                                    }
+                                }
+                            }
+                        }
                     }
                     .padding(.horizontal)
 
@@ -100,9 +163,29 @@ struct AuthenticationView: View {
 
     private var isFormValid: Bool {
         if isSignUp {
-            return !email.isEmpty && !password.isEmpty && !fullName.isEmpty && password.count >= 8
+            return emailError == nil &&
+                   passwordError == nil &&
+                   nameError == nil &&
+                   !email.isEmpty &&
+                   !password.isEmpty &&
+                   !fullName.isEmpty &&
+                   EmailValidator.isValid(email) &&
+                   PasswordValidator.validate(password).isValid
         } else {
-            return !email.isEmpty && !password.isEmpty
+            return !email.isEmpty &&
+                   !password.isEmpty &&
+                   EmailValidator.isValid(email)
+        }
+    }
+
+    private func strengthColor(_ strength: PasswordStrength) -> Color {
+        switch strength {
+        case .weak:
+            return .red
+        case .medium:
+            return .orange
+        case .strong:
+            return .green
         }
     }
 }
