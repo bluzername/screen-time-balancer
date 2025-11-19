@@ -17,31 +17,37 @@ class DeviceRepository: DeviceRepositoryProtocol {
     private let client = SupabaseClientManager.shared.client
 
     func registerDevice(_ request: RegisterDeviceRequest) async throws -> Device {
-        return try await client.database
-            .from("devices")
-            .insert(request)
-            .select()
-            .single()
-            .execute()
-            .value
+        return try await RetryManager.shared.execute(operation: "DeviceRepository.registerDevice") {
+            try await self.client.database
+                .from("devices")
+                .insert(request)
+                .select()
+                .single()
+                .execute()
+                .value
+        }
     }
 
     func updateDeviceLastSync(deviceId: UUID) async throws {
-        try await client.database
-            .from("devices")
-            .update(["last_sync": Date().iso8601String])
-            .eq("id", value: deviceId.uuidString)
-            .execute()
+        try await RetryManager.shared.execute(operation: "DeviceRepository.updateDeviceLastSync") {
+            try await self.client.database
+                .from("devices")
+                .update(["last_sync": Date().iso8601String])
+                .eq("id", value: deviceId.uuidString)
+                .execute()
+        }
     }
 
     func getDeviceInfo(deviceId: UUID) async throws -> Device {
-        return try await client.database
-            .from("devices")
-            .select()
-            .eq("id", value: deviceId.uuidString)
-            .single()
-            .execute()
-            .value
+        return try await RetryManager.shared.execute(operation: "DeviceRepository.getDeviceInfo") {
+            try await self.client.database
+                .from("devices")
+                .select()
+                .eq("id", value: deviceId.uuidString)
+                .single()
+                .execute()
+                .value
+        }
     }
 }
 

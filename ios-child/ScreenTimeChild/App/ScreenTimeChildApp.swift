@@ -10,7 +10,7 @@ import BackgroundTasks
 @main
 struct ScreenTimeChildApp: App {
     @StateObject private var appState = ChildAppState()
-    @StateObject private var enforcementEngine = EnforcementEngine()
+    @StateObject private var enforcementEngine = EnforcementEngineV2()
     @State private var backgroundSyncManager = BackgroundSyncManager()
 
     init() {

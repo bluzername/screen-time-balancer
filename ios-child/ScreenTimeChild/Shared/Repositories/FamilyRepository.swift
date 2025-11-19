@@ -15,37 +15,41 @@ class FamilyRepository: FamilyRepositoryProtocol {
     private let client = SupabaseClientManager.shared.client
 
     func getFamilyByInviteCode(_ code: String) async throws -> Family {
-        return try await client.database
-            .from("families")
-            .select()
-            .eq("invite_code", value: code.uppercased())
-            .single()
-            .execute()
-            .value
+        return try await RetryManager.shared.execute(operation: "FamilyRepository.getFamilyByInviteCode") {
+            try await self.client.database
+                .from("families")
+                .select()
+                .eq("invite_code", value: code.uppercased())
+                .single()
+                .execute()
+                .value
+        }
     }
 
     func joinFamily(inviteCode: String, userId: UUID, role: FamilyMemberRole) async throws -> JoinFamilyResult {
-        // First, get the family
-        let family = try await getFamilyByInviteCode(inviteCode)
+        return try await RetryManager.shared.execute(operation: "FamilyRepository.joinFamily") {
+            // First, get the family
+            let family = try await self.getFamilyByInviteCode(inviteCode)
 
-        // Create family member request
-        let memberRequest = JoinFamilyRequest(
-            familyId: family.id,
-            userId: userId,
-            role: role,
-            nickname: nil
-        )
+            // Create family member request
+            let memberRequest = JoinFamilyRequest(
+                familyId: family.id,
+                userId: userId,
+                role: role,
+                nickname: nil
+            )
 
-        // Add user to family
-        let member: FamilyMember = try await client.database
-            .from("family_members")
-            .insert(memberRequest)
-            .select()
-            .single()
-            .execute()
-            .value
+            // Add user to family
+            let member: FamilyMember = try await self.client.database
+                .from("family_members")
+                .insert(memberRequest)
+                .select()
+                .single()
+                .execute()
+                .value
 
-        return JoinFamilyResult(family: family, member: member)
+            return JoinFamilyResult(family: family, member: member)
+        }
     }
 }
 

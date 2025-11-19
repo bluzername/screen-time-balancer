@@ -21,71 +21,77 @@ class AuthRepository: AuthRepositoryProtocol {
     // MARK: - Sign Up
 
     func signUp(email: String, password: String, fullName: String, role: UserRole) async throws -> UserProfile {
-        do {
-            // Sign up user with Supabase Auth
-            let response = try await client.auth.signUp(
-                email: email,
-                password: password,
-                data: [
-                    "full_name": .string(fullName),
-                    "role": .string(role.rawValue)
-                ]
-            )
+        return try await RetryManager.shared.execute(operation: "AuthRepository.signUp") {
+            do {
+                // Sign up user with Supabase Auth
+                let response = try await self.client.auth.signUp(
+                    email: email,
+                    password: password,
+                    data: [
+                        "full_name": .string(fullName),
+                        "role": .string(role.rawValue)
+                    ]
+                )
 
-            guard let user = response.user else {
-                throw APIError.invalidResponse
+                guard let user = response.user else {
+                    throw APIError.invalidResponse
+                }
+
+                // Create user profile in database
+                let profile = UserProfile(
+                    id: UUID(uuidString: user.id.uuidString)!,
+                    email: email,
+                    fullName: fullName,
+                    role: role,
+                    dateOfBirth: nil,
+                    avatarUrl: nil,
+                    createdAt: Date(),
+                    updatedAt: Date()
+                )
+
+                // Insert profile into database
+                try await self.client.database
+                    .from("user_profiles")
+                    .insert(profile)
+                    .execute()
+
+                return profile
+
+            } catch {
+                ErrorHandler.shared.handleSilently(error, context: "AuthRepository.signUp")
+                throw APIError.networkError(error)
             }
-
-            // Create user profile in database
-            let profile = UserProfile(
-                id: UUID(uuidString: user.id.uuidString)!,
-                email: email,
-                fullName: fullName,
-                role: role,
-                dateOfBirth: nil,
-                avatarUrl: nil,
-                createdAt: Date(),
-                updatedAt: Date()
-            )
-
-            // Insert profile into database
-            try await client.database
-                .from("user_profiles")
-                .insert(profile)
-                .execute()
-
-            return profile
-
-        } catch {
-            throw APIError.networkError(error)
         }
     }
 
     // MARK: - Sign In
 
     func signIn(email: String, password: String) async throws -> UserProfile {
-        do {
-            // Sign in with Supabase Auth
-            let session = try await client.auth.signIn(
-                email: email,
-                password: password
-            )
+        return try await RetryManager.shared.execute(operation: "AuthRepository.signIn") {
+            do {
+                // Sign in with Supabase Auth
+                let session = try await self.client.auth.signIn(
+                    email: email,
+                    password: password
+                )
 
-            // Fetch user profile
-            let userId = session.user.id.uuidString
+                // Fetch user profile
+                let userId = session.user.id.uuidString
 
-            let response: UserProfile = try await client.database
-                .from("user_profiles")
-                .select()
-                .eq("id", value: userId)
-                .single()
-                .execute()
-                .value
+                let response: UserProfile = try await self.client.database
+                    .from("user_profiles")
+                    .select()
+                    .eq("id", value: userId)
+                    .single()
+                    .execute()
+                    .value
 
-            return response
+                return response
 
-        } catch {
-            throw APIError.networkError(error)
+            } catch {
+                ErrorHandler.shared.handleSilently(error, context: "AuthRepository.signIn")
+                throw APIError.networkError(error)
+            }
         }
     }
 

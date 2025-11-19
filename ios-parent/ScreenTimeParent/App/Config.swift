@@ -2,41 +2,11 @@
 // Screen Time Parent
 //
 // Supabase configuration and app constants
+// Supports environment variables for secure credential management
 
 import Foundation
 
 enum Config {
-    // MARK: - Supabase Configuration
-    // TODO: Replace with your actual Supabase project credentials
-    // Get these from: Supabase Dashboard → Settings → API
-
-    static let supabaseURL = URL(string: "https://your-project-ref.supabase.co")!
-    static let supabaseAnonKey = "your-anon-key-here"
-
-    // MARK: - App Configuration
-
-    static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
-    static let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
-
-    // MARK: - Feature Flags
-
-    static let enableBiometricAuth = true
-    static let enableRealtime = true
-    static let enableOfflineMode = true
-
-    // MARK: - Sync Configuration
-
-    static let syncIntervalSeconds: TimeInterval = 300 // 5 minutes
-    static let usageReportDays = 7
-    static let maxOfflineQueueSize = 100
-
-    // MARK: - Rule Defaults
-
-    static let defaultRequiredEducationalMinutes = 30
-    static let defaultMaxRecreationalMinutes = 120
-    static let defaultRuleStartTime = "06:00:00"
-    static let defaultRuleEndTime = "21:00:00"
-
     // MARK: - Environment
 
     enum Environment {
@@ -53,20 +23,141 @@ enum Config {
         }
     }
 
+    // MARK: - Supabase Configuration
+
+    /// Supabase Project URL
+    /// Priority: 1) Environment variable 2) Hardcoded value
+    static let supabaseURL: URL = {
+        if let urlString = ProcessInfo.processInfo.environment["SUPABASE_URL"],
+           let url = URL(string: urlString) {
+            return url
+        }
+
+        // Fallback to hardcoded (replace with your URL)
+        guard let url = URL(string: "https://your-project-ref.supabase.co") else {
+            fatalError("Invalid Supabase URL configuration")
+        }
+        return url
+    }()
+
+    /// Supabase Anonymous Key
+    /// Priority: 1) Environment variable 2) Hardcoded value
+    static let supabaseAnonKey: String = {
+        if let key = ProcessInfo.processInfo.environment["SUPABASE_ANON_KEY"] {
+            return key
+        }
+        return "your-anon-key-here"
+    }()
+
+    // MARK: - App Configuration
+
+    static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+    static let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+    static let bundleIdentifier = Bundle.main.bundleIdentifier ?? "com.screentimeparent"
+
+    // MARK: - Feature Flags
+
+    static let enableBiometricAuth = true
+
+    static let enableRealtime: Bool = {
+        if let enabled = ProcessInfo.processInfo.environment["PARENT_ENABLE_REALTIME"] {
+            return enabled.lowercased() == "true"
+        }
+        return true
+    }()
+
+    static let enableOfflineMode = true
+
+    static let enableLogging: Bool = {
+        if let enabled = ProcessInfo.processInfo.environment["ENABLE_LOGGING"] {
+            return enabled.lowercased() == "true"
+        }
+        #if DEBUG
+        return true
+        #else
+        return false
+        #endif
+    }()
+
+    static let enableAnalytics: Bool = {
+        if let enabled = ProcessInfo.processInfo.environment["ENABLE_ANALYTICS"] {
+            return enabled.lowercased() == "true"
+        }
+        return Environment.current == .production
+    }()
+
+    // MARK: - Sync Configuration
+
+    static let syncIntervalSeconds: TimeInterval = {
+        if let interval = ProcessInfo.processInfo.environment["PARENT_SYNC_INTERVAL_SECONDS"],
+           let seconds = TimeInterval(interval) {
+            return seconds
+        }
+        return 60 // 1 minute for parent app
+    }()
+
+    static let usageReportDays = 7
+    static let maxOfflineQueueSize = 100
+
+    // MARK: - Rule Defaults
+
+    static let defaultRequiredEducationalMinutes = 30
+    static let defaultMaxRecreationalMinutes = 120
+    static let defaultRuleStartTime = "06:00:00"
+    static let defaultRuleEndTime = "21:00:00"
+
     // MARK: - Validation
 
-    static func validateConfiguration() -> Bool {
-        guard supabaseURL.absoluteString != "https://your-project-ref.supabase.co" else {
-            print("⚠️ WARNING: Supabase URL not configured. Please update Config.swift")
-            return false
+    static func validateConfiguration() -> ConfigurationValidation {
+        var errors: [String] = []
+
+        if supabaseURL.absoluteString.contains("your-project-ref") {
+            errors.append("Supabase URL not configured")
         }
 
-        guard supabaseAnonKey != "your-anon-key-here" else {
-            print("⚠️ WARNING: Supabase anon key not configured. Please update Config.swift")
-            return false
+        if supabaseAnonKey.contains("your-anon-key") {
+            errors.append("Supabase anonymous key not configured")
         }
 
-        return true
+        if supabaseAnonKey.count < 100 {
+            errors.append("Supabase anonymous key appears invalid")
+        }
+
+        return ConfigurationValidation(isValid: errors.isEmpty, errors: errors)
+    }
+
+    static func printConfiguration() {
+        guard enableLogging else { return }
+
+        print("""
+        ================================
+        Screen Time Parent - Configuration
+        ================================
+        Environment: \(Environment.current)
+        Version: \(appVersion) (\(buildNumber))
+        Bundle ID: \(bundleIdentifier)
+
+        Supabase:
+        - URL: \(supabaseURL.absoluteString)
+        - Key: \(supabaseAnonKey.prefix(20))...(hidden)
+
+        Settings:
+        - Realtime: \(enableRealtime)
+        - Logging: \(enableLogging)
+        - Analytics: \(enableAnalytics)
+        - Sync Interval: \(syncIntervalSeconds)s
+        ================================
+        """)
+    }
+}
+
+struct ConfigurationValidation {
+    let isValid: Bool
+    let errors: [String]
+
+    var errorMessage: String? {
+        guard !isValid else { return nil }
+        return errors.joined(separator: "\n")
     }
 }
 
@@ -87,7 +178,7 @@ enum AppConstants {
     static let nameMaxLength = 50
 }
 
-// MARK: - Error Messages
+// MARK: - Error Messages (Deprecated - use ErrorHandling.swift)
 
 enum ErrorMessages {
     static let networkError = "Network connection error. Please check your internet connection."

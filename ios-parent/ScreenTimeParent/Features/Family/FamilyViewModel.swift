@@ -14,9 +14,11 @@ class FamilyViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var showingCreateFamily = false
     @Published var showingInviteCode = false
+    @Published var realtimeConnected = false
 
     private let familyRepository: FamilyRepositoryProtocol
     private let authRepository: AuthRepositoryProtocol
+    private var realtimeManager: RealtimeManager?
 
     init(familyRepository: FamilyRepositoryProtocol = FamilyRepository(),
          authRepository: AuthRepositoryProtocol = AuthRepository()) {
@@ -154,5 +156,58 @@ class FamilyViewModel: ObservableObject {
 
         This will link your device so we can manage screen time together.
         """
+    }
+
+    // MARK: - Realtime Subscriptions
+
+    func setupRealtime(familyId: UUID) async {
+        guard Config.enableRealtime else {
+            print("⚠️ Realtime subscriptions disabled in config")
+            return
+        }
+
+        realtimeManager = RealtimeManager()
+
+        await realtimeManager?.subscribeToFamily(familyId: familyId)
+
+        // Handle earned time updates
+        realtimeManager?.onEarnedTimeUpdate = { [weak self] earnedTime in
+            Task { @MainActor in
+                // Reload family details to get fresh data
+                await self?.loadFamilyDetails(familyId: familyId)
+            }
+        }
+
+        // Handle usage session updates
+        realtimeManager?.onUsageSessionUpdate = { [weak self] session in
+            Task { @MainActor in
+                // Reload family details
+                await self?.loadFamilyDetails(familyId: familyId)
+            }
+        }
+
+        // Handle rule updates
+        realtimeManager?.onRuleUpdate = { [weak self] rule in
+            Task { @MainActor in
+                await self?.loadFamilyDetails(familyId: familyId)
+            }
+        }
+
+        // Handle device status updates
+        realtimeManager?.onDeviceStatusUpdate = { [weak self] device in
+            Task { @MainActor in
+                await self?.loadFamilyDetails(familyId: familyId)
+            }
+        }
+
+        realtimeConnected = true
+        print("✅ Realtime subscriptions active for family \(familyId)")
+    }
+
+    func disconnectRealtime() async {
+        await realtimeManager?.disconnect()
+        realtimeManager = nil
+        realtimeConnected = false
+        print("📡 Disconnected from realtime")
     }
 }
