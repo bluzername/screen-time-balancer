@@ -1,0 +1,672 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C1000001229A0001 /* ScreenTimeChildApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000001229A0001 /* ScreenTimeChildApp.swift */; };
+		C1000002229A0002 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000002229A0002 /* Config.swift */; };
+		C1000003229A0003 /* Config-Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000003229A0003 /* Config-Template.swift */; };
+		C1000004229A0004 /* ChildAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000004229A0004 /* ChildAuthenticationView.swift */; };
+		C1000005229A0005 /* ChildDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000005229A0005 /* ChildDashboardView.swift */; };
+		C1000006229A0006 /* AppTokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000006229A0006 /* AppTokenStorage.swift */; };
+		C1000007229A0007 /* DeviceActivityScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000007229A0007 /* DeviceActivityScheduler.swift */; };
+		C1000008229A0008 /* EnforcementEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000008229A0008 /* EnforcementEngine.swift */; };
+		C1000009229A0009 /* EnforcementEngineV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000009229A0009 /* EnforcementEngineV2.swift */; };
+		C100000A229A000A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200000A229A000A /* App.swift */; };
+		C100000B229A000B /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200000B229A000B /* Rule.swift */; };
+		C100000C229A000C /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200000C229A000C /* Usage.swift */; };
+		C100000D229A000D /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200000D229A000D /* SupabaseClient.swift */; };
+		C100000E229A000E /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200000E229A000E /* DeviceRepository.swift */; };
+		C100000F229A000F /* FamilyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200000F229A000F /* FamilyRepository.swift */; };
+		C1000010229A0010 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000010229A0010 /* Repositories.swift */; };
+		C1000011229A0011 /* ErrorHandler+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000011229A0011 /* ErrorHandler+Shared.swift */; };
+		C1000012229A0012 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000012229A0012 /* ErrorHandling.swift */; };
+		C1000013229A0013 /* RetryManager+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000013229A0013 /* RetryManager+Shared.swift */; };
+		C1000014229A0014 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000014229A0014 /* Validators.swift */; };
+		C1000015229A0015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2000015229A0015 /* Assets.xcassets */; };
+		C1000020229A0020 /* DeviceActivityMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000020229A0020 /* DeviceActivityMonitorExtension.swift */; };
+		C1000021229A0021 /* SharedDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000021229A0021 /* SharedDataManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C3000001229A0001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5000000229A0000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5000002229A0002;
+			remoteInfo = ScreenTimeMonitor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C3500001229A0001 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C2000000229A0000 /* ScreenTimeChild.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenTimeChild.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2000001229A0001 /* ScreenTimeChildApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeChildApp.swift; sourceTree = "<group>"; };
+		C2000002229A0002 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		C2000003229A0003 /* Config-Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config-Template.swift"; sourceTree = "<group>"; };
+		C2000004229A0004 /* ChildAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildAuthenticationView.swift; sourceTree = "<group>"; };
+		C2000005229A0005 /* ChildDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildDashboardView.swift; sourceTree = "<group>"; };
+		C2000006229A0006 /* AppTokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTokenStorage.swift; sourceTree = "<group>"; };
+		C2000007229A0007 /* DeviceActivityScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityScheduler.swift; sourceTree = "<group>"; };
+		C2000008229A0008 /* EnforcementEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnforcementEngine.swift; sourceTree = "<group>"; };
+		C2000009229A0009 /* EnforcementEngineV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnforcementEngineV2.swift; sourceTree = "<group>"; };
+		C200000A229A000A /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		C200000B229A000B /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		C200000C229A000C /* Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
+		C200000D229A000D /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
+		C200000E229A000E /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
+		C200000F229A000F /* FamilyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyRepository.swift; sourceTree = "<group>"; };
+		C2000010229A0010 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
+		C2000011229A0011 /* ErrorHandler+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorHandler+Shared.swift"; sourceTree = "<group>"; };
+		C2000012229A0012 /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
+		C2000013229A0013 /* RetryManager+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RetryManager+Shared.swift"; sourceTree = "<group>"; };
+		C2000014229A0014 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
+		C2000015229A0015 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C2000020229A0020 /* DeviceActivityMonitorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityMonitorExtension.swift; sourceTree = "<group>"; };
+		C2000021229A0021 /* SharedDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDataManager.swift; sourceTree = "<group>"; };
+		C2000022229A0022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2000030229A0030 /* ScreenTimeMonitor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenTimeMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C3000002229A0002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3000003229A0003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C4000000229A0000 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				C4000001229A0001 /* ScreenTimeChild */,
+				C4000010229A0010 /* ScreenTimeMonitor */,
+				C4000002229A0002 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C4000001229A0001 /* ScreenTimeChild */ = {
+			isa = PBXGroup;
+			children = (
+				C4000003229A0003 /* App */,
+				C4000004229A0004 /* Features */,
+				C4000005229A0005 /* Shared */,
+				C4000006229A0006 /* Resources */,
+			);
+			path = ScreenTimeChild;
+			sourceTree = "<group>";
+		};
+		C4000002229A0002 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C2000000229A0000 /* ScreenTimeChild.app */,
+				C2000030229A0030 /* ScreenTimeMonitor.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C4000003229A0003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C2000001229A0001 /* ScreenTimeChildApp.swift */,
+				C2000002229A0002 /* Config.swift */,
+				C2000003229A0003 /* Config-Template.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C4000004229A0004 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				C4000007229A0007 /* Authentication */,
+				C4000008229A0008 /* Dashboard */,
+				C4000009229A0009 /* Enforcement */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		C4000005229A0005 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C400000A229A000A /* Models */,
+				C400000B229A000B /* Networking */,
+				C400000C229A000C /* Repositories */,
+				C400000D229A000D /* Utilities */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		C4000006229A0006 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C2000015229A0015 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C4000007229A0007 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C2000004229A0004 /* ChildAuthenticationView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C4000008229A0008 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				C2000005229A0005 /* ChildDashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		C4000009229A0009 /* Enforcement */ = {
+			isa = PBXGroup;
+			children = (
+				C2000006229A0006 /* AppTokenStorage.swift */,
+				C2000007229A0007 /* DeviceActivityScheduler.swift */,
+				C2000008229A0008 /* EnforcementEngine.swift */,
+				C2000009229A0009 /* EnforcementEngineV2.swift */,
+			);
+			path = Enforcement;
+			sourceTree = "<group>";
+		};
+		C400000A229A000A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C200000A229A000A /* App.swift */,
+				C200000B229A000B /* Rule.swift */,
+				C200000C229A000C /* Usage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C400000B229A000B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C200000D229A000D /* SupabaseClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		C400000C229A000C /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				C200000E229A000E /* DeviceRepository.swift */,
+				C200000F229A000F /* FamilyRepository.swift */,
+				C2000010229A0010 /* Repositories.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		C400000D229A000D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C2000011229A0011 /* ErrorHandler+Shared.swift */,
+				C2000012229A0012 /* ErrorHandling.swift */,
+				C2000013229A0013 /* RetryManager+Shared.swift */,
+				C2000014229A0014 /* Validators.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C4000010229A0010 /* ScreenTimeMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				C2000020229A0020 /* DeviceActivityMonitorExtension.swift */,
+				C2000021229A0021 /* SharedDataManager.swift */,
+				C2000022229A0022 /* Info.plist */,
+			);
+			path = ScreenTimeMonitor;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C5000001229A0001 /* ScreenTimeChild */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7000001229A0001 /* Build configuration list for PBXNativeTarget "ScreenTimeChild" */;
+			buildPhases = (
+				C6000001229A0001 /* Sources */,
+				C3000002229A0002 /* Frameworks */,
+				C6000002229A0002 /* Resources */,
+				C3500001229A0001 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3000004229A0004 /* PBXTargetDependency */,
+			);
+			name = ScreenTimeChild;
+			packageProductDependencies = (
+				C8000001229A0001 /* Supabase */,
+			);
+			productName = ScreenTimeChild;
+			productReference = C2000000229A0000 /* ScreenTimeChild.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C5000002229A0002 /* ScreenTimeMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7000002229A0002 /* Build configuration list for PBXNativeTarget "ScreenTimeMonitor" */;
+			buildPhases = (
+				C6000003229A0003 /* Sources */,
+				C3000003229A0003 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScreenTimeMonitor;
+			productName = ScreenTimeMonitor;
+			productReference = C2000030229A0030 /* ScreenTimeMonitor.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C5000000229A0000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					C5000001229A0001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					C5000002229A0002 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = C7000000229A0000 /* Build configuration list for PBXProject "ScreenTimeChild" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C4000000229A0000 /* Root */;
+			packageReferences = (
+				C8000000229A0000 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			productRefGroup = C4000002229A0002 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C5000001229A0001 /* ScreenTimeChild */,
+				C5000002229A0002 /* ScreenTimeMonitor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C6000002229A0002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1000015229A0015 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C6000001229A0001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1000001229A0001 /* ScreenTimeChildApp.swift in Sources */,
+				C1000002229A0002 /* Config.swift in Sources */,
+				C1000003229A0003 /* Config-Template.swift in Sources */,
+				C1000004229A0004 /* ChildAuthenticationView.swift in Sources */,
+				C1000005229A0005 /* ChildDashboardView.swift in Sources */,
+				C1000006229A0006 /* AppTokenStorage.swift in Sources */,
+				C1000007229A0007 /* DeviceActivityScheduler.swift in Sources */,
+				C1000008229A0008 /* EnforcementEngine.swift in Sources */,
+				C1000009229A0009 /* EnforcementEngineV2.swift in Sources */,
+				C100000A229A000A /* App.swift in Sources */,
+				C100000B229A000B /* Rule.swift in Sources */,
+				C100000C229A000C /* Usage.swift in Sources */,
+				C100000D229A000D /* SupabaseClient.swift in Sources */,
+				C100000E229A000E /* DeviceRepository.swift in Sources */,
+				C100000F229A000F /* FamilyRepository.swift in Sources */,
+				C1000010229A0010 /* Repositories.swift in Sources */,
+				C1000011229A0011 /* ErrorHandler+Shared.swift in Sources */,
+				C1000012229A0012 /* ErrorHandling.swift in Sources */,
+				C1000013229A0013 /* RetryManager+Shared.swift in Sources */,
+				C1000014229A0014 /* Validators.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6000003229A0003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1000020229A0020 /* DeviceActivityMonitorExtension.swift in Sources */,
+				C1000021229A0021 /* SharedDataManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C3000004229A0004 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C5000002229A0002 /* ScreenTimeMonitor */;
+			targetProxy = C3000001229A0001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C9000001229A0001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C9000002229A0002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9000003229A0003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Screen Time Child";
+				INFOPLIST_KEY_NSFamilySharingUsageDescription = "This app uses Family Controls to manage screen time.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.screentimechild.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C9000004229A0004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Screen Time Child";
+				INFOPLIST_KEY_NSFamilySharingUsageDescription = "This app uses Family Controls to manage screen time.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.screentimechild.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C9000005229A0005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScreenTimeMonitor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ScreenTimeMonitor;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.screentimechild.app.ScreenTimeMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C9000006229A0006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScreenTimeMonitor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ScreenTimeMonitor;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.screentimechild.app.ScreenTimeMonitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C7000000229A0000 /* Build configuration list for PBXProject "ScreenTimeChild" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9000001229A0001 /* Debug */,
+				C9000002229A0002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7000001229A0001 /* Build configuration list for PBXNativeTarget "ScreenTimeChild" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9000003229A0003 /* Debug */,
+				C9000004229A0004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7000002229A0002 /* Build configuration list for PBXNativeTarget "ScreenTimeMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9000005229A0005 /* Debug */,
+				C9000006229A0006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C8000000229A0000 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C8000001229A0001 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8000000229A0000 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C5000000229A0000 /* Project object */;
+}

@@ -3,8 +3,7 @@
 .env.local
 .env.*.local
 
-# Xcode
-*.xcodeproj
+# Xcode user data (but keep project files)
 *.xcworkspace
 !*.xcworkspace/contents.xcworkspacedata
 *.pbxuser
