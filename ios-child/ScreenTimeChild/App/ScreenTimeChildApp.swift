@@ -35,6 +35,15 @@ struct ScreenTimeChildApp: App {
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
                     scheduleBackgroundSync()
                 }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                    // Refresh data when app comes to foreground
+                    Task {
+                        if Config.enableLogging {
+                            print("📱 App entered foreground - syncing with backend")
+                        }
+                        await enforcementEngine.syncWithBackend()
+                    }
+                }
         }
     }
 

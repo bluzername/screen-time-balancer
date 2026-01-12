@@ -57,7 +57,7 @@ enum Config {
            let seconds = TimeInterval(interval) {
             return seconds
         }
-        return 300 // 5 minutes
+        return 60 // 1 minute - more responsive for rule enforcement
     }()
 
     static let heartbeatIntervalSeconds: TimeInterval = {

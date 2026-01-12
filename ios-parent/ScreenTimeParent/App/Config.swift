@@ -63,7 +63,15 @@ enum Config {
         if let enabled = ProcessInfo.processInfo.environment["PARENT_ENABLE_REALTIME"] {
             return enabled.lowercased() == "true"
         }
-        return true
+        return false // Disabled by default - using polling instead to avoid Supabase realtime costs
+    }()
+
+    /// Enable polling as alternative to realtime subscriptions
+    static let enablePolling: Bool = {
+        if let enabled = ProcessInfo.processInfo.environment["PARENT_ENABLE_POLLING"] {
+            return enabled.lowercased() == "true"
+        }
+        return true // Enabled by default
     }()
 
     static let enableOfflineMode = true
@@ -143,6 +151,7 @@ enum Config {
 
         Settings:
         - Realtime: \(enableRealtime)
+        - Polling: \(enablePolling)
         - Logging: \(enableLogging)
         - Analytics: \(enableAnalytics)
         - Sync Interval: \(syncIntervalSeconds)s

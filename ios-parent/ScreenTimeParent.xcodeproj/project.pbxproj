@@ -5,15 +5,270 @@
 	};
 	objectVersion = 56;
 	objects = {
-		/* Project object */
-		Project /* Project object */ = {
+
+/* Begin PBXBuildFile section */
+		F1000001229A0001 /* ScreenTimeParentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000001229A0001 /* ScreenTimeParentApp.swift */; };
+		F1000002229A0002 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000002229A0002 /* Config.swift */; };
+		F1000003229A0003 /* Config-Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000003229A0003 /* Config-Template.swift */; };
+		F1000004229A0004 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000004229A0004 /* MainTabView.swift */; };
+		F1000005229A0005 /* UsageReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000005229A0005 /* UsageReportsView.swift */; };
+		F1000006229A0006 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000006229A0006 /* AuthenticationView.swift */; };
+		F1000007229A0007 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000007229A0007 /* AuthenticationViewModel.swift */; };
+		F1000008229A0008 /* FamilyManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000008229A0008 /* FamilyManagementView.swift */; };
+		F1000009229A0009 /* FamilyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000009229A0009 /* FamilyViewModel.swift */; };
+		F100000A229A000A /* RulesManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200000A229A000A /* RulesManagementView.swift */; };
+		F100000B229A000B /* RulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200000B229A000B /* RulesViewModel.swift */; };
+		F100000C229A000C /* AppCategorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200000C229A000C /* AppCategorizationView.swift */; };
+		F100000D229A000D /* AppSelectionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200000D229A000D /* AppSelectionPicker.swift */; };
+		F100000E229A000E /* AppsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200000E229A000E /* AppsViewModel.swift */; };
+		F100000F229A000F /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200000F229A000F /* Family.swift */; };
+		F1000010229A0010 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000010229A0010 /* Rule.swift */; };
+		F1000011229A0011 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000011229A0011 /* App.swift */; };
+		F1000012229A0012 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000012229A0012 /* Usage.swift */; };
+		F1000013229A0013 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000013229A0013 /* User.swift */; };
+		F1000014229A0014 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000014229A0014 /* AuthRepository.swift */; };
+		F1000015229A0015 /* FamilyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000015229A0015 /* FamilyRepository.swift */; };
+		F1000016229A0016 /* RealtimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000016229A0016 /* RealtimeManager.swift */; };
+		F1000017229A0017 /* RulesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000017229A0017 /* RulesRepository.swift */; };
+		F1000018229A0018 /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000018229A0018 /* SupabaseClient.swift */; };
+		F1000019229A0019 /* ErrorHandler+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000019229A0019 /* ErrorHandler+Shared.swift */; };
+		F100001A229A001A /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200001A229A001A /* ErrorHandling.swift */; };
+		F100001B229A001B /* RetryManager+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200001B229A001B /* RetryManager+Shared.swift */; };
+		F100001C229A001C /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F200001C229A001C /* Validators.swift */; };
+		F100001D229A001D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F200001D229A001D /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F2000000229A0000 /* ScreenTimeParent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenTimeParent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2000001229A0001 /* ScreenTimeParentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeParentApp.swift; sourceTree = "<group>"; };
+		F2000002229A0002 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		F2000003229A0003 /* Config-Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config-Template.swift"; sourceTree = "<group>"; };
+		F2000004229A0004 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		F2000005229A0005 /* UsageReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageReportsView.swift; sourceTree = "<group>"; };
+		F2000006229A0006 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		F2000007229A0007 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		F2000008229A0008 /* FamilyManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManagementView.swift; sourceTree = "<group>"; };
+		F2000009229A0009 /* FamilyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyViewModel.swift; sourceTree = "<group>"; };
+		F200000A229A000A /* RulesManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesManagementView.swift; sourceTree = "<group>"; };
+		F200000B229A000B /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewModel.swift; sourceTree = "<group>"; };
+		F200000C229A000C /* AppCategorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCategorizationView.swift; sourceTree = "<group>"; };
+		F200000D229A000D /* AppSelectionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSelectionPicker.swift; sourceTree = "<group>"; };
+		F200000E229A000E /* AppsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewModel.swift; sourceTree = "<group>"; };
+		F200000F229A000F /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
+		F2000010229A0010 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		F2000011229A0011 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		F2000012229A0012 /* Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
+		F2000013229A0013 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F2000014229A0014 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		F2000015229A0015 /* FamilyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyRepository.swift; sourceTree = "<group>"; };
+		F2000016229A0016 /* RealtimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeManager.swift; sourceTree = "<group>"; };
+		F2000017229A0017 /* RulesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesRepository.swift; sourceTree = "<group>"; };
+		F2000018229A0018 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
+		F2000019229A0019 /* ErrorHandler+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorHandler+Shared.swift"; sourceTree = "<group>"; };
+		F200001A229A001A /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
+		F200001B229A001B /* RetryManager+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RetryManager+Shared.swift"; sourceTree = "<group>"; };
+		F200001C229A001C /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
+		F200001D229A001D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F3000001229A0001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4000000229A0000 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				F4000001229A0001 /* ScreenTimeParent */,
+				F4000002229A0002 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4000001229A0001 /* ScreenTimeParent */ = {
+			isa = PBXGroup;
+			children = (
+				F4000003229A0003 /* App */,
+				F4000004229A0004 /* Features */,
+				F4000005229A0005 /* Shared */,
+				F4000006229A0006 /* Resources */,
+			);
+			path = ScreenTimeParent;
+			sourceTree = "<group>";
+		};
+		F4000002229A0002 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2000000229A0000 /* ScreenTimeParent.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4000003229A0003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F2000001229A0001 /* ScreenTimeParentApp.swift */,
+				F2000002229A0002 /* Config.swift */,
+				F2000003229A0003 /* Config-Template.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F4000004229A0004 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				F4000007229A0007 /* Dashboard */,
+				F4000008229A0008 /* Authentication */,
+				F4000009229A0009 /* Family */,
+				F400000A229A000A /* Rules */,
+				F400000B229A000B /* AppCategorization */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		F4000005229A0005 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F400000C229A000C /* Models */,
+				F400000D229A000D /* Networking */,
+				F400000E229A000E /* Utilities */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F4000006229A0006 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F200001D229A001D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F4000007229A0007 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				F2000004229A0004 /* MainTabView.swift */,
+				F2000005229A0005 /* UsageReportsView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		F4000008229A0008 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F2000006229A0006 /* AuthenticationView.swift */,
+				F2000007229A0007 /* AuthenticationViewModel.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		F4000009229A0009 /* Family */ = {
+			isa = PBXGroup;
+			children = (
+				F2000008229A0008 /* FamilyManagementView.swift */,
+				F2000009229A0009 /* FamilyViewModel.swift */,
+			);
+			path = Family;
+			sourceTree = "<group>";
+		};
+		F400000A229A000A /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				F200000A229A000A /* RulesManagementView.swift */,
+				F200000B229A000B /* RulesViewModel.swift */,
+			);
+			path = Rules;
+			sourceTree = "<group>";
+		};
+		F400000B229A000B /* AppCategorization */ = {
+			isa = PBXGroup;
+			children = (
+				F200000C229A000C /* AppCategorizationView.swift */,
+				F200000D229A000D /* AppSelectionPicker.swift */,
+				F200000E229A000E /* AppsViewModel.swift */,
+			);
+			path = AppCategorization;
+			sourceTree = "<group>";
+		};
+		F400000C229A000C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F200000F229A000F /* Family.swift */,
+				F2000010229A0010 /* Rule.swift */,
+				F2000011229A0011 /* App.swift */,
+				F2000012229A0012 /* Usage.swift */,
+				F2000013229A0013 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F400000D229A000D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F2000014229A0014 /* AuthRepository.swift */,
+				F2000015229A0015 /* FamilyRepository.swift */,
+				F2000016229A0016 /* RealtimeManager.swift */,
+				F2000017229A0017 /* RulesRepository.swift */,
+				F2000018229A0018 /* SupabaseClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F400000E229A000E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F2000019229A0019 /* ErrorHandler+Shared.swift */,
+				F200001A229A001A /* ErrorHandling.swift */,
+				F200001B229A001B /* RetryManager+Shared.swift */,
+				F200001C229A001C /* Validators.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F5000001229A0001 /* ScreenTimeParent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7000001229A0001 /* Build configuration list for PBXNativeTarget "ScreenTimeParent" */;
+			buildPhases = (
+				F6000001229A0001 /* Sources */,
+				F3000001229A0001 /* Frameworks */,
+				F6000002229A0002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScreenTimeParent;
+			packageProductDependencies = (
+				F8000001229A0001 /* Supabase */,
+			);
+			productName = ScreenTimeParent;
+			productReference = F2000000229A0000 /* ScreenTimeParent.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5000000229A0000 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					F5000001229A0001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
 			};
-			buildConfigurationList = ProjectConfigurationList;
+			buildConfigurationList = F7000000229A0000 /* Build configuration list for PBXProject "ScreenTimeParent" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -21,14 +276,287 @@
 				en,
 				Base,
 			);
-			mainGroup = MainGroup;
-			productRefGroup = Products;
+			mainGroup = F4000000229A0000 /* Root */;
+			packageReferences = (
+				F8000000229A0000 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			productRefGroup = F4000002229A0002 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ScreenTimeParent,
+				F5000001229A0001 /* ScreenTimeParent */,
 			);
 		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F6000002229A0002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F100001D229A001D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6000001229A0001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1000001229A0001 /* ScreenTimeParentApp.swift in Sources */,
+				F1000002229A0002 /* Config.swift in Sources */,
+				F1000003229A0003 /* Config-Template.swift in Sources */,
+				F1000004229A0004 /* MainTabView.swift in Sources */,
+				F1000005229A0005 /* UsageReportsView.swift in Sources */,
+				F1000006229A0006 /* AuthenticationView.swift in Sources */,
+				F1000007229A0007 /* AuthenticationViewModel.swift in Sources */,
+				F1000008229A0008 /* FamilyManagementView.swift in Sources */,
+				F1000009229A0009 /* FamilyViewModel.swift in Sources */,
+				F100000A229A000A /* RulesManagementView.swift in Sources */,
+				F100000B229A000B /* RulesViewModel.swift in Sources */,
+				F100000C229A000C /* AppCategorizationView.swift in Sources */,
+				F100000D229A000D /* AppSelectionPicker.swift in Sources */,
+				F100000E229A000E /* AppsViewModel.swift in Sources */,
+				F100000F229A000F /* Family.swift in Sources */,
+				F1000010229A0010 /* Rule.swift in Sources */,
+				F1000011229A0011 /* App.swift in Sources */,
+				F1000012229A0012 /* Usage.swift in Sources */,
+				F1000013229A0013 /* User.swift in Sources */,
+				F1000014229A0014 /* AuthRepository.swift in Sources */,
+				F1000015229A0015 /* FamilyRepository.swift in Sources */,
+				F1000016229A0016 /* RealtimeManager.swift in Sources */,
+				F1000017229A0017 /* RulesRepository.swift in Sources */,
+				F1000018229A0018 /* SupabaseClient.swift in Sources */,
+				F1000019229A0019 /* ErrorHandler+Shared.swift in Sources */,
+				F100001A229A001A /* ErrorHandling.swift in Sources */,
+				F100001B229A001B /* RetryManager+Shared.swift in Sources */,
+				F100001C229A001C /* Validators.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F9000001229A0001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F9000002229A0002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F9000003229A0003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Screen Time Parent";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.screentimeparent.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F9000004229A0004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Screen Time Parent";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.screentimeparent.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F7000000229A0000 /* Build configuration list for PBXProject "ScreenTimeParent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9000001229A0001 /* Debug */,
+				F9000002229A0002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7000001229A0001 /* Build configuration list for PBXNativeTarget "ScreenTimeParent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9000003229A0003 /* Debug */,
+				F9000004229A0004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F8000000229A0000 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F8000001229A0001 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F8000000229A0000 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = Project;
+	rootObject = F5000000229A0000 /* Project object */;
 }
