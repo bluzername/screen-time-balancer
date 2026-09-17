@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C1000001229A0001 /* ScreenTimeChildApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000001229A0001 /* ScreenTimeChildApp.swift */; };
 		C1000002229A0002 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000002229A0002 /* Config.swift */; };
-		C1000003229A0003 /* Config-Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000003229A0003 /* Config-Template.swift */; };
 		C1000004229A0004 /* ChildAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000004229A0004 /* ChildAuthenticationView.swift */; };
 		C1000005229A0005 /* ChildDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000005229A0005 /* ChildDashboardView.swift */; };
 		C1000006229A0006 /* AppTokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2000006229A0006 /* AppTokenStorage.swift */; };
@@ -345,7 +344,6 @@
 			files = (
 				C1000001229A0001 /* ScreenTimeChildApp.swift in Sources */,
 				C1000002229A0002 /* Config.swift in Sources */,
-				C1000003229A0003 /* Config-Template.swift in Sources */,
 				C1000004229A0004 /* ChildAuthenticationView.swift in Sources */,
 				C1000005229A0005 /* ChildDashboardView.swift in Sources */,
 				C1000006229A0006 /* AppTokenStorage.swift in Sources */,

@@ -20,7 +20,7 @@ Before you begin, ensure you have:
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/screen-time-balancer.git
+git clone https://github.com/bluzername/screen-time-balancer.git
 cd screen-time-balancer
 ```
 
@@ -516,7 +516,7 @@ Product → Build (⌘B)
 
 ### Support
 
-- GitHub Issues: [Create Issue](https://github.com/yourusername/screen-time-balancer/issues)
+- GitHub Issues: [Create Issue](https://github.com/bluzername/screen-time-balancer/issues)
 - Supabase Discord: [discord.supabase.com](https://discord.supabase.com)
 - Apple Developer Forums: [developer.apple.com/forums](https://developer.apple.com/forums)
 
