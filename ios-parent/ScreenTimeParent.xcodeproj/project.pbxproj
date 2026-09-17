@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F1000001229A0001 /* ScreenTimeParentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000001229A0001 /* ScreenTimeParentApp.swift */; };
 		F1000002229A0002 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000002229A0002 /* Config.swift */; };
-		F1000003229A0003 /* Config-Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000003229A0003 /* Config-Template.swift */; };
 		F1000004229A0004 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000004229A0004 /* MainTabView.swift */; };
 		F1000005229A0005 /* UsageReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000005229A0005 /* UsageReportsView.swift */; };
 		F1000006229A0006 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2000006229A0006 /* AuthenticationView.swift */; };
@@ -307,7 +306,6 @@
 			files = (
 				F1000001229A0001 /* ScreenTimeParentApp.swift in Sources */,
 				F1000002229A0002 /* Config.swift in Sources */,
-				F1000003229A0003 /* Config-Template.swift in Sources */,
 				F1000004229A0004 /* MainTabView.swift in Sources */,
 				F1000005229A0005 /* UsageReportsView.swift in Sources */,
 				F1000006229A0006 /* AuthenticationView.swift in Sources */,

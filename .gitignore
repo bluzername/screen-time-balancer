@@ -3,6 +3,10 @@
 .env.local
 .env.*.local
 
+# Per-developer app configuration (copy from Config-Template.swift)
+ios-parent/ScreenTimeParent/App/Config.swift
+ios-child/ScreenTimeChild/App/Config.swift
+
 # Xcode user data (but keep project files)
 *.xcworkspace
 !*.xcworkspace/contents.xcworkspacedata
