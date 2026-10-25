@@ -72,7 +72,7 @@ dependencies {
     implementation("io.github.jan-tennert.supabase:postgrest-kt")
     implementation("io.github.jan-tennert.supabase:auth-kt")
     implementation("io.github.jan-tennert.supabase:realtime-kt")
-    implementation("io.ktor:ktor-client-android:2.3.6")
+    implementation("io.ktor:ktor-client-android:3.6.0")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.48")
