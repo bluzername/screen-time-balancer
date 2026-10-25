@@ -433,4 +433,4 @@ Copyright © 2024. All rights reserved.
 ## Support
 
 - Documentation: [/docs](../docs/)
-- Issues: [GitHub Issues](https://github.com/yourusername/screen-time-balancer/issues)
+- Issues: [GitHub Issues](https://github.com/bluzername/screen-time-balancer/issues)

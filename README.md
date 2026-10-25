@@ -1,193 +1,74 @@
-# Screen Time Balancer - Parental Control App MVP
+# Screen Time Balancer
 
-A comprehensive parental control and screen time management system for iOS and iPadOS that enforces a **positive use-first model**. Children earn recreational screen time by engaging with educational apps first.
+Parental control system built around an earn-to-play rule: children unlock recreational apps by first spending time in educational ones. Parents set the rules and watch progress from their own device; a Supabase backend keeps the family in sync.
 
-## 🎯 Core Concept
+## What is in this repository
 
-Children must spend time in educational apps before unlocking recreational apps (games, YouTube, social media). Parents configure requirements and monitor usage in real-time.
+| Directory | What it is | Status |
+|-----------|-----------|--------|
+| `backend/` | Supabase project: schema and row-level-security migrations, a `daily-reset` edge function, `config.toml` | Migrations apply with `supabase db push` |
+| `ios-parent/` | SwiftUI parent app (`ScreenTimeParent.xcodeproj`): auth, family management, app categorisation, rules, usage reports, polling sync | Builds the pure core as a Swift package; full app has known compile errors against current supabase-swift (see below) |
+| `ios-child/` | SwiftUI child app (`ScreenTimeChild.xcodeproj`) plus `ScreenTimeMonitor` DeviceActivity extension: educational time tracking and enforcement via FamilyControls | Needs a physical device and the Family Controls entitlement |
+| `android-parent/`, `android-child/` | Kotlin / Jetpack Compose ports with Hilt, a foreground monitoring service, accessibility-based enforcement and a blocking overlay | Gradle projects; no CI build yet |
+| `docs/` | Architecture, API, configuration, deployment, integration and Xcode setup guides | |
 
-## 🏗️ Architecture
+## Quick start
 
-### Three-Component System
+### 1. Backend
 
-1. **Backend (Supabase)**
-   - User authentication and authorization
-   - Family account management
-   - Real-time data synchronization
-   - Screen time rules engine
-   - Usage tracking and analytics
-
-2. **Parent iOS App**
-   - Family management and child device linking
-   - App categorization (educational vs recreational)
-   - Screen time rules configuration
-   - Real-time monitoring dashboard
-   - Usage reports and analytics
-
-3. **Child iOS App**
-   - Educational time tracking
-   - App enforcement engine
-   - Progress dashboard
-   - Parental lock mechanisms
-
-## 📁 Project Structure
-
-```
-screen-time-balancer/
-├── backend/                 # Supabase backend configuration
-│   ├── supabase/
-│   │   └── migrations/     # Database migrations
-│   ├── api/                # API documentation
-│   └── docs/               # Backend architecture docs
-├── ios-parent/             # Parent iOS application
-│   └── ScreenTimeParent/
-│       ├── App/            # App lifecycle and configuration
-│       ├── Features/       # Feature modules
-│       ├── Shared/         # Shared components and utilities
-│       └── Resources/      # Assets and resources
-├── ios-child/              # Child iOS application
-│   └── ScreenTimeChild/
-│       ├── App/            # App lifecycle and configuration
-│       ├── Features/       # Feature modules
-│       ├── Shared/         # Shared components and utilities
-│       └── Resources/      # Assets and resources
-└── docs/                   # Project-wide documentation
-    ├── ARCHITECTURE.md     # System architecture
-    ├── API.md             # API documentation
-    └── DEPLOYMENT.md      # Deployment guide
-```
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Xcode 15.0+ (for iOS development)
-- iOS 17.0+ (deployment target)
-- Supabase account (free tier available)
-- Node.js 18+ (for Supabase CLI)
-
-### Backend Setup
-
-1. Install Supabase CLI:
 ```bash
 npm install -g supabase
-```
-
-2. Create a Supabase project at [supabase.com](https://supabase.com)
-
-3. Initialize Supabase locally:
-```bash
 cd backend
-supabase init
+supabase login
 supabase link --project-ref YOUR_PROJECT_REF
-```
-
-4. Run migrations:
-```bash
 supabase db push
 ```
 
-5. Copy the Supabase URL and anon key for iOS app configuration
+Copy the project URL and anon key from the Supabase dashboard (Project Settings > API). Details in `backend/docs/SETUP.md`.
 
-### iOS Apps Setup
+### 2. iOS apps
 
-#### Parent App
-
-1. Open `ios-parent/ScreenTimeParent.xcodeproj` in Xcode
-2. Update `Config.swift` with your Supabase credentials
-3. Select your development team in signing settings
-4. Build and run on device or simulator
-
-#### Child App
-
-1. Open `ios-child/ScreenTimeChild.xcodeproj` in Xcode
-2. Update `Config.swift` with your Supabase credentials
-3. Select your development team in signing settings
-4. Build and run on device or simulator
-
-## 🔑 Key Features
-
-### For Parents
-- ✅ Real-time usage monitoring
-- ✅ Flexible screen time rules
-- ✅ App categorization
-- ✅ Remote device control
-- ✅ Weekly usage reports
-- ✅ Multiple child management
-
-### For Children
-- ✅ Clear progress indicators
-- ✅ Educational time tracking
-- ✅ Earn-to-play system
-- ✅ Age-appropriate interface
-
-### Backend
-- ✅ Secure authentication
-- ✅ Real-time synchronization
-- ✅ Family account linking
-- ✅ Usage data analytics
-- ✅ COPPA/GDPR compliant
-
-## 🔒 Security & Privacy
-
-- End-to-end encryption for sensitive data
-- COPPA compliant for children's privacy
-- Role-based access control
-- Secure family linking with invite codes
-- Local data validation with server synchronization
-
-## 📱 Platform Requirements
-
-- iOS 17.0+ / iPadOS 17.0+
-- Swift 5.9+
-- SwiftUI framework
-- Screen Time API integration
-
-## 🧪 Testing
-
-Both iOS apps include comprehensive unit and integration tests:
+Each app reads its Supabase settings from an untracked `Config.swift`:
 
 ```bash
-# Run Parent app tests
-cd ios-parent
-xcodebuild test -scheme ScreenTimeParent -destination 'platform=iOS Simulator,name=iPhone 15'
-
-# Run Child app tests
-cd ios-child
-xcodebuild test -scheme ScreenTimeChild -destination 'platform=iOS Simulator,name=iPhone 15'
+cp ios-parent/ScreenTimeParent/App/Config-Template.swift ios-parent/ScreenTimeParent/App/Config.swift
+cp ios-child/ScreenTimeChild/App/Config-Template.swift  ios-child/ScreenTimeChild/App/Config.swift
 ```
 
-## 📚 Documentation
+Edit the two copies (or set `SUPABASE_URL` and `SUPABASE_ANON_KEY` in the scheme's environment), open the `.xcodeproj` in Xcode 15+, pick your team and run. The child app only works on a real device (iOS 17+) with the Family Controls capability; see `ios-child/DEVICE_ACTIVITY_SETUP.md`.
 
-- [Architecture Overview](docs/ARCHITECTURE.md)
-- [API Documentation](docs/API.md)
-- [Deployment Guide](docs/DEPLOYMENT.md)
-- [Backend Setup](backend/docs/SETUP.md)
+### 3. Android apps
 
-## 🛣️ Roadmap
+Open `android-parent` or `android-child` in Android Studio (compileSdk 34, minSdk 29) and supply the Supabase URL and key where `SupabaseClient.kt` expects them.
 
-### MVP (Current)
-- Core authentication and family management
-- Basic educational time enforcement
-- App categorization
-- Usage tracking and reporting
+## Building and testing without Xcode
 
-### Future Enhancements
-- Machine learning for app recommendations
-- Gamification and rewards system
-- Advanced scheduling (school time, bedtime)
-- Integration with educational platforms
-- Multi-device enforcement
-- Content filtering
+The parent app's models and validators are platform independent and packaged as `ScreenTimeCore` (`ios-parent/Package.swift`):
 
-## 📄 License
+```bash
+cd ios-parent
+swift build
+swift test      # XCTest suite for the validators
+```
 
-Copyright © 2024. All rights reserved.
+CI runs exactly this on macOS, plus a type-check of both `Config-Template.swift` files.
 
-## 🤝 Support
+## Known issues
 
-For issues and questions, please contact support or create an issue in the repository.
+- `ScreenTimeParent.xcodeproj` resolves `supabase-swift` 2.x at its latest version, and `Shared/Networking/{AuthRepository,SupabaseClient,RealtimeManager}.swift` were written against an older Realtime API (`RealtimeChannel.postgresChange`, `RealtimeClient.removeChannel`). `xcodebuild` currently fails with 16 errors in those three files. Realtime is disabled by default in favour of polling (`Config.enablePolling`), so the fix is either to pin the package to the 2.x minor it was written for or to port `RealtimeManager` to `RealtimeChannelV2`.
+- Neither Xcode project has a unit test target; the Swift package above is the tested surface.
 
----
+## Documentation
 
-Built with ❤️ for families who want balanced screen time
+- [Architecture](docs/ARCHITECTURE.md)
+- [API](docs/API.md)
+- [Configuration](docs/CONFIGURATION.md)
+- [Getting started](docs/GETTING_STARTED.md)
+- [Deployment](docs/DEPLOYMENT.md)
+- [Integration guide](docs/INTEGRATION_GUIDE.md)
+- [Xcode setup and testing](docs/XCODE_SETUP_AND_TESTING_GUIDE.md)
+- [Backend setup](backend/docs/SETUP.md)
+
+## License
+
+Copyright 2024. All rights reserved.
