@@ -72,7 +72,7 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:2.48.1")
     ksp("com.google.dagger:hilt-compiler:2.48.1")
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.4.0")
 
     // Supabase
     implementation(platform("io.github.jan-tennert.supabase:bom:2.0.4"))
@@ -94,8 +94,8 @@ dependencies {
 
     // WorkManager
     implementation("androidx.work:work-runtime-ktx:2.9.0")
-    implementation("androidx.hilt:hilt-work:1.1.0")
-    ksp("androidx.hilt:hilt-compiler:1.1.0")
+    implementation("androidx.hilt:hilt-work:1.4.0")
+    ksp("androidx.hilt:hilt-compiler:1.4.0")
 
     // DataStore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
