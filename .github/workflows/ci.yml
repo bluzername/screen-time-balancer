@@ -13,7 +13,7 @@ jobs:
       run:
         working-directory: ios-parent
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: swift --version
       - run: swift build
       - run: swift test
@@ -22,7 +22,7 @@ jobs:
     name: Config templates compile standalone
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Type-check the parent and child Config templates
         run: |
           xcrun swiftc -typecheck ios-parent/ScreenTimeParent/App/Config-Template.swift
