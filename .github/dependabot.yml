@@ -4,14 +4,6 @@ updates:
     directory: /ios-parent
     schedule:
       interval: weekly
-  - package-ecosystem: gradle
-    directory: /android-parent
-    schedule:
-      interval: weekly
-  - package-ecosystem: gradle
-    directory: /android-child
-    schedule:
-      interval: weekly
   - package-ecosystem: github-actions
     directory: /
     schedule:
