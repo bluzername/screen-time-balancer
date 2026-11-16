@@ -9,7 +9,7 @@ Parental control system built around an earn-to-play rule: children unlock recre
 | `backend/` | Supabase project: schema and row-level-security migrations, a `daily-reset` edge function, `config.toml` | Migrations apply with `supabase db push` |
 | `ios-parent/` | SwiftUI parent app (`ScreenTimeParent.xcodeproj`): auth, family management, app categorisation, rules, usage reports, polling sync | Builds the pure core as a Swift package; full app has known compile errors against current supabase-swift (see below) |
 | `ios-child/` | SwiftUI child app (`ScreenTimeChild.xcodeproj`) plus `ScreenTimeMonitor` DeviceActivity extension: educational time tracking and enforcement via FamilyControls | Needs a physical device and the Family Controls entitlement |
-| `android-parent/`, `android-child/` | Kotlin / Jetpack Compose ports with Hilt, a foreground monitoring service, accessibility-based enforcement and a blocking overlay | Gradle projects; no CI build yet |
+| `android-parent/`, `android-child/` | Kotlin / Jetpack Compose ports with Hilt, a foreground monitoring service, accessibility-based enforcement and a blocking overlay | Gradle projects; never built in CI (no Gradle wrapper); not maintained, Dependabot disabled for these |
 | `docs/` | Architecture, API, configuration, deployment, integration and Xcode setup guides | |
 
 ## Quick start
